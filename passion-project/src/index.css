@@ -1,8 +1,23 @@
 html {
-  background-color: #9482c9;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: -moz-linear-gradient(#9482c9, #432991);
+  background-size: stretch;
+  background-repeat: no-repeat;
+
+  height: 100vh;
 }
 
 #root {
   width: 1440px;
   margin: auto;
+  padding: 0;
+  margin-top: 0px;
+
+  background-color: rgb(58, 58, 58);
 }
