@@ -6,7 +6,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-image: -moz-linear-gradient(#9482c9, #432991);
+  background-image: -moz-linear-gradient(#4c5265, #323949);
   background-size: stretch;
   background-repeat: no-repeat;
 
@@ -19,5 +19,5 @@ body {
   padding: 0;
   margin-top: 0px;
 
-  background-color: rgb(58, 58, 58);
+  background-color: #212129;
 }
