@@ -29,6 +29,7 @@ export function Character(): JSX.Element {
       <div className="page">
         <div className="content">
           <div>
+            <h3>Look up your World of Warcraft character:</h3>
             <form onSubmit={handleSubmit}>
               <span>
                 <label>Realm:</label>
