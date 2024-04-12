@@ -32,11 +32,18 @@ export function LandingPage(): JSX.Element {
 
   let displayLoader: JSX.Element = <div className="loader"></div>;
   let displayAffixes: JSX.Element[] = [];
-  if (affixes !== null) {
-    let affixArr: string[] = affixes.title.split(",");
-    for (let i = 0; i < affixArr.length; i++) {
-      displayAffixes.push(<p key={i}>{affixArr[i]}</p>);
-    }
+
+  let tempAffixString = "Tyrannical, Entangling, Sanguine";
+  let affixArr: string[] = tempAffixString.split(", ");
+  for (let i = 0; i < affixArr.length; i++) {
+    let imageUrl: string = `images/${affixArr[i].toLowerCase()}.png`;
+    let jsxElement: JSX.Element = (
+      <span key={i} className="affix-row">
+        <img src={imageUrl} alt="Affix image" />
+        <p>{affixArr[i]}</p>
+      </span>
+    );
+    displayAffixes.push(jsxElement);
   }
 
   return (
@@ -47,8 +54,9 @@ export function LandingPage(): JSX.Element {
           <div className="panels">
             <div className="panel-one">
               <h4>Current Affixes:</h4>
-              {affixes === null ? displayLoader : displayAffixes}
+              <span>{/* {affixes === null*/ false ? displayLoader : displayAffixes}</span>
             </div>
+            <div className="panel-two"></div>
           </div>
         </div>
       </div>

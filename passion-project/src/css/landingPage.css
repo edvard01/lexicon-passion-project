@@ -1,6 +1,53 @@
+@font-face {
+  font-family: "lifeCraft";
+  src: url("../assets/LifeCraft_Font.ttf");
+}
+
 .landing-page {
   height: 800px;
   width: 100%;
+
+  font-family: "lifeCraft";
+}
+
+.landing-page .content {
+  text-align: center;
+}
+
+.landing-page .content h2 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 0.6rem;
+}
+
+.landing-page .content .panels {
+  display: flex;
+}
+
+.landing-page .content .panels .panel-one {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 660px;
+}
+
+.landing-page .content .panels .panel-one img {
+  width: 50px;
+  height: 50px;
+}
+
+.landing-page .content .panels .panel-one h4 {
+  color: white;
+  font-size: 2rem;
+}
+
+.landing-page .content .panels .panel-two {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 660px;
 }
 
 /* HTML: <div class="loader"></div> */
@@ -10,6 +57,8 @@
   border-radius: 50%;
   border: 8px solid #514b82;
   animation: l20-1 0.8s infinite linear alternate, l20-2 1.6s infinite linear;
+  position: relative;
+  left: 305px;
 }
 @keyframes l20-1 {
   0% {
