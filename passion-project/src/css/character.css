@@ -13,10 +13,15 @@
   margin: auto;
 
   display: flex;
+  justify-content: center;
   flex-grow: 1;
 }
 
-.page .content h3 {
+.page .content .panel-one {
+  width: 474px;
+}
+
+.page .content .panel-one h3 {
   color: white;
   margin-top: 2.5rem;
   margin-bottom: 0px;
@@ -25,7 +30,7 @@
   font-family: "lifeCraft";
 }
 
-.page .content form {
+.page .content .panel-one form {
   height: 250px;
   width: 300px;
   display: flex;
@@ -34,17 +39,17 @@
   font-family: "lifeCraft";
 }
 
-.page .content form span {
+.page .content .panel-one form span {
   display: flex;
   flex-direction: column;
 }
 
-.page .content label {
+.page .content .panel-one label {
   color: white;
   font-size: 1.3rem;
 }
 
-.page .content select {
+.page .content .panel-one select {
   width: 100px;
   height: 40px;
 
@@ -53,11 +58,11 @@
   border: none;
 }
 
-.page .content select option {
+.page .content .panel-one select option {
   color: white;
 }
 
-.page .content form span input {
+.page .content .panel-one form span input {
   height: 26px;
   font-size: 1rem;
 
@@ -66,12 +71,12 @@
   border: 1px solid #323949;
 }
 
-.page .content form span input:focus {
+.page .content .panel-one form span input:focus {
   outline: none;
   border: 1px solid #5d6068;
 }
 
-.page .content form button {
+.page .content .panel-one form button {
   height: 24px;
   width: 25%;
   background-color: #4c5265;
@@ -82,7 +87,20 @@
   font-size: 1rem;
 }
 
-.page .content form button:hover {
+.page .content .panel-one form button:hover {
   background-color: #5d6068;
   cursor: pointer;
+}
+
+.page .content .panel-two {
+  width: 474px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page .content .panel-two .character-section h3 {
+  color: white;
+  font-family: "lifeCraft";
+  font-size: 1.8rem;
 }

@@ -32,14 +32,28 @@
   width: 660px;
 }
 
-.landing-page .content .panels .panel-one img {
-  width: 50px;
-  height: 50px;
+.landing-page .content .panels .panel-one .affix-row {
+  width: 130px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-page .content .panels .panel-one .affix-row img {
+  width: 32px;
+  height: 32px;
+  margin-right: 14px;
+}
+
+.landing-page .content .panels .panel-one .affix-row p {
+  font-size: 1.4rem;
 }
 
 .landing-page .content .panels .panel-one h4 {
   color: white;
   font-size: 2rem;
+  margin-bottom: 1.2rem;
 }
 
 .landing-page .content .panels .panel-two {

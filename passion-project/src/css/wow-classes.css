@@ -1,0 +1,93 @@
+.rogue {
+  color: #fff569;
+}
+
+.death-knight {
+  color: #c41f3b;
+}
+
+.druid {
+  color: #ff7d0a;
+}
+
+.hunter {
+  color: #abd473;
+}
+
+.mage {
+  color: #69ccf0;
+}
+
+.monk {
+  color: #00ff96;
+}
+
+.paladin {
+  color: #f58cba;
+}
+
+.priest {
+  color: #ffffff;
+}
+
+.shaman {
+  color: #0070de;
+}
+
+.warlock {
+  color: #9482c9;
+}
+
+.warrior {
+  color: #c79c6e;
+}
+
+.guild {
+  color: #3ce13f;
+}
+
+/* 
+
+    Classses:
+    Death Knight – #C41F3B
+    Druid – #FF7D0A
+    Hunter – #ABD473
+    Mage – #69CCF0
+    Monk – #00FF96
+    Paladin – #F58CBA
+    Priest – #FFFFFF
+    Rogue – #FFF569
+    Shaman – #0070DE
+    Warlock – #9482C9
+    Warrior – #C79C6E
+
+    Chat colors:
+    General / Trade / LocalDefense / LookingForGroup – #FEC1C0
+    System Messages – #FFFF00
+    Guild – #3CE13F
+    Officer – #40BC40
+    Party – #AAABFE
+    Party Leader – #77C8FF
+    Linked Spells – #67BCFF
+    Say – #FFFFFF
+    Whisper – #FF7EFF
+    Yell – #FF3F40
+    Emote – #FF7E40
+    Instance / Raid- #FF7D01
+    Instance Leader / Raid Leader – #FF4709
+    Raid Warning – #FF4700
+    Achievement – #FFFC01
+    Battle.net Whisper – #00FAF6
+    Battle.net Conversation – #00ADEF
+
+    Item colors:
+    Poor – #889D9D
+    Common – #FFFFFF
+    Uncommon – #1EFF0C
+    Rare – #0070FF
+    Superior – #A335EE
+    Legendary – #FF8000
+    Heirloom – #E6CC80
+
+
+*/

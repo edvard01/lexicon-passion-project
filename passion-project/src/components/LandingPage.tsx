@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/landingPage.css";
+import bolstering from "../assets/bolstering.jpg";
 
 interface IAffixObject {
   region: string;
@@ -18,6 +19,7 @@ interface IAffixDetailsObject {
 
 export function LandingPage(): JSX.Element {
   const [affixes, setAffixes] = useState<IAffixObject | null>(null);
+  const [displayAffixes, setDisplayAffixes] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     fetch(`https://raider.io/api/v1/mythic-plus/affixes?region=eu&locale=en`)
@@ -25,26 +27,32 @@ export function LandingPage(): JSX.Element {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setAffixes(data);
       });
   }, []);
 
-  let displayLoader: JSX.Element = <div className="loader"></div>;
-  let displayAffixes: JSX.Element[] = [];
+  useEffect(() => {
+    if (affixes !== null) {
+      let tempJsxArr: JSX.Element[] = [];
+      console.log(true);
+      let affixArr: string[] = affixes.title.split(", ");
+      console.log(affixArr.length);
+      for (let i = 0; i < affixArr.length; i++) {
+        let imageUrl: string = bolstering;
+        console.log(imageUrl);
+        let jsxElement: JSX.Element = (
+          <span key={i} className="affix-row">
+            <img src={bolstering} />
+            <p>{affixArr[i]}</p>
+          </span>
+        );
+        tempJsxArr.push(jsxElement);
+      }
+      setDisplayAffixes(tempJsxArr);
+    }
+  }, [affixes]);
 
-  let tempAffixString = "Tyrannical, Entangling, Sanguine";
-  let affixArr: string[] = tempAffixString.split(", ");
-  for (let i = 0; i < affixArr.length; i++) {
-    let imageUrl: string = `images/${affixArr[i].toLowerCase()}.png`;
-    let jsxElement: JSX.Element = (
-      <span key={i} className="affix-row">
-        <img src={imageUrl} alt="Affix image" />
-        <p>{affixArr[i]}</p>
-      </span>
-    );
-    displayAffixes.push(jsxElement);
-  }
+  let displayLoader: JSX.Element = <div className="loader"></div>;
 
   return (
     <>
@@ -53,8 +61,8 @@ export function LandingPage(): JSX.Element {
           <h2>Welcome!</h2>
           <div className="panels">
             <div className="panel-one">
-              <h4>Current Affixes:</h4>
-              <span>{/* {affixes === null*/ false ? displayLoader : displayAffixes}</span>
+              <h4>Current Affixes (EU):</h4>
+              <span>{affixes === null ? displayLoader : displayAffixes}</span>
             </div>
             <div className="panel-two"></div>
           </div>
