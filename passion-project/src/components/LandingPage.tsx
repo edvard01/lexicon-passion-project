@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../css/landingPage.css";
-import bolstering from "../assets/bolstering.jpg";
 import { retrieveImage } from "../objects/AffixIcons.js";
+import { ResetCountDown } from "./ResetCountDown.js";
 
 interface IAffixObject {
   region: string;
@@ -18,8 +18,28 @@ interface IAffixDetailsObject {
   wowhead_url: string;
 }
 
+interface IResetData {
+  periods: IPeriod[];
+}
+
+interface IPeriod {
+  region: string;
+  previous: IWeek;
+  current: IWeek;
+  next: IWeek;
+}
+
+interface IWeek {
+  period: number;
+  start: string;
+  end: string;
+}
+
 export function LandingPage(): JSX.Element {
   const [affixes, setAffixes] = useState<IAffixObject | null>(null);
+  const [resetData, setResetData] = useState<IResetData | null>(null);
+  const [euResetTime, setEuResetTime] = useState<string>("");
+  const [naResetTime, setNaResetTime] = useState<string>("");
   const [displayAffixes, setDisplayAffixes] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
@@ -29,6 +49,14 @@ export function LandingPage(): JSX.Element {
       })
       .then((data) => {
         setAffixes(data);
+      });
+
+    fetch(`https://raider.io/api/v1/periods`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setResetData(data);
       });
   }, []);
 
@@ -53,6 +81,27 @@ export function LandingPage(): JSX.Element {
     }
   }, [affixes]);
 
+  useEffect(() => {
+    if (resetData !== null) {
+      setResetTimes(resetData);
+    }
+  });
+
+  const setResetTimes = (data: IResetData) => {
+    console.log(data.periods[0].region);
+    for (let i = 0; data.periods.length > i; i++) {
+      if (data.periods[i].region === "eu") {
+        console.log("eu true, ", data.periods[i].current);
+        setEuResetTime(data.periods[i].current.end);
+      } else if (data.periods[i].region === "us") {
+        console.log("us true, ", data.periods[i].current);
+        setNaResetTime(data.periods[i].current.end);
+      }
+    }
+
+    console.log(euResetTime, naResetTime);
+  };
+
   let displayLoader: JSX.Element = <div className="loader"></div>;
 
   return (
@@ -65,7 +114,9 @@ export function LandingPage(): JSX.Element {
               <h4>Current Affixes (EU):</h4>
               <span>{affixes === null ? displayLoader : displayAffixes}</span>
             </div>
-            <div className="panel-two"></div>
+            <div className="panel-two">
+              {naResetTime !== "" || euResetTime !== "" ? <ResetCountDown naResetTime={naResetTime} euResetTime={euResetTime} /> : <></>}
+            </div>
           </div>
         </div>
       </div>
