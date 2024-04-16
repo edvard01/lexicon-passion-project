@@ -99,6 +99,13 @@
   align-items: center;
 }
 
+.page .content .panel-two .character-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .page .content .panel-two .character-section h3 {
   color: white;
   font-family: "lifeCraft";

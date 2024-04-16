@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../css/landingPage.css";
 import bolstering from "../assets/bolstering.jpg";
+import { retrieveImage } from "../objects/AffixIcons.js";
 
 interface IAffixObject {
   region: string;
@@ -34,15 +35,15 @@ export function LandingPage(): JSX.Element {
   useEffect(() => {
     if (affixes !== null) {
       let tempJsxArr: JSX.Element[] = [];
-      console.log(true);
+      console.log(affixes);
       let affixArr: string[] = affixes.title.split(", ");
-      console.log(affixArr.length);
+      console.log(affixArr);
       for (let i = 0; i < affixArr.length; i++) {
-        let imageUrl: string = bolstering;
+        let imageUrl = retrieveImage(affixArr[i].toLowerCase());
         console.log(imageUrl);
         let jsxElement: JSX.Element = (
           <span key={i} className="affix-row">
-            <img src={bolstering} />
+            <img src={imageUrl} />
             <p>{affixArr[i]}</p>
           </span>
         );
