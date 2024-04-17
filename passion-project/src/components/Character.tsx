@@ -95,7 +95,7 @@ export function Character(): JSX.Element {
                   <option value="EU" onChange={() => setRegion("eu")}>
                     Europe
                   </option>
-                  <option value="NA" onChange={() => setRegion("na")}>
+                  <option value="US" onChange={() => setRegion("us")}>
                     North America
                   </option>
                   <option value="TW" onChange={() => setRegion("tw")}>

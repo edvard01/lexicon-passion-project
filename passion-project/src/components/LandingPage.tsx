@@ -40,12 +40,12 @@ interface IWeek {
 
 export function LandingPage(): JSX.Element {
   const [euAffixes, setEuAffixes] = useState<IAffixObject | null>(null);
-  const [naAffixes, setNaAffixes] = useState<IAffixObject | null>(null);
+  const [usAffixes, setUsAffixes] = useState<IAffixObject | null>(null);
   const [resetData, setResetData] = useState<IResetData | null>(null);
   const [euResetTime, setEuResetTime] = useState<string>("");
-  const [naResetTime, setNaResetTime] = useState<string>("");
+  const [usResetTime, setUsResetTime] = useState<string>("");
   const [displayEuAffixes, setDisplayEuAffixes] = useState<JSX.Element[]>([]);
-  const [displayNaAffixes, setDisplayNaAffixes] = useState<JSX.Element[]>([]);
+  const [displayUsAffixes, setDisplayUsAffixes] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     fetch(`https://raider.io/api/v1/mythic-plus/affixes?region=eu&locale=en`)
@@ -61,7 +61,7 @@ export function LandingPage(): JSX.Element {
         return res.json();
       })
       .then((data) => {
-        setNaAffixes(data);
+        setUsAffixes(data);
       });
 
     fetch(`https://raider.io/api/v1/periods`)
@@ -94,9 +94,9 @@ export function LandingPage(): JSX.Element {
   }, [euAffixes]);
 
   useEffect(() => {
-    if (naAffixes !== null) {
+    if (usAffixes !== null) {
       let tempJsxArr: JSX.Element[] = [];
-      let affixArr: string[] = naAffixes.title.split(", ");
+      let affixArr: string[] = usAffixes.title.split(", ");
       console.log(affixArr);
       for (let i = 0; i < affixArr.length; i++) {
         let imageUrl = retrieveImage(affixArr[i].toLowerCase() as AffixKey);
@@ -109,9 +109,9 @@ export function LandingPage(): JSX.Element {
         );
         tempJsxArr.push(jsxElement);
       }
-      setDisplayNaAffixes(tempJsxArr);
+      setDisplayUsAffixes(tempJsxArr);
     }
-  }, [naAffixes]);
+  }, [usAffixes]);
 
   useEffect(() => {
     if (resetData !== null) {
@@ -127,11 +127,11 @@ export function LandingPage(): JSX.Element {
         setEuResetTime(data.periods[i].current.end);
       } else if (data.periods[i].region === "us") {
         console.log("us true, ", data.periods[i].current);
-        setNaResetTime(data.periods[i].current.end);
+        setUsResetTime(data.periods[i].current.end);
       }
     }
 
-    console.log(euResetTime, naResetTime);
+    console.log(euResetTime, usResetTime);
   };
 
   let displayLoader: JSX.Element = <div className="loader"></div>;
@@ -149,11 +149,11 @@ export function LandingPage(): JSX.Element {
               </span>
               <span>
                 <h4>Current Affixes (US):</h4>
-                <span>{naAffixes === null ? displayLoader : displayNaAffixes}</span>
+                <span>{usAffixes === null ? displayLoader : displayUsAffixes}</span>
               </span>
             </div>
             <div className="panel-two">
-              {naResetTime !== "" || euResetTime !== "" ? <ResetCountDown naResetTime={naResetTime} euResetTime={euResetTime} /> : <></>}
+              {usResetTime !== "" || euResetTime !== "" ? <ResetCountDown naResetTime={usResetTime} euResetTime={euResetTime} /> : <></>}
             </div>
           </div>
         </div>
