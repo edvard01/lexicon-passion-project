@@ -112,7 +112,7 @@
   background-size: auto 350px;
   background-repeat: no-repeat;
   background-position: center;
-  height: 500px;
+  height: 400px;
 }
 
 .page .content .panel-two .character-section {
@@ -142,4 +142,23 @@
 .page .content .panel-two .character-section .name {
   display: flex;
   gap: 12px;
+}
+
+.page .content .panel-two .link-section {
+  height: 100px;
+  width: 474px;
+}
+
+.page .content .panel-two .link-section .nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+}
+
+.page .content .panel-two .link-section .nav-links a img {
+  width: 50px;
+  height: auto;
 }

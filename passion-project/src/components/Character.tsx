@@ -1,6 +1,9 @@
 import { useState, FormEvent, useEffect } from "react";
 import "../css/character.css";
 import "../css/wow-classes.css";
+import rioIcon from "../assets/raiderio-icon.png";
+import wowlogsIcon from "../assets/warcraftlogs-icon-white.png";
+import wowIcon from "../assets/wow-icon.png";
 
 interface IResponse {
   achievement_points: number;
@@ -52,18 +55,37 @@ export function Character(): JSX.Element {
     let jsxElement: JSX.Element = <></>;
     if (response !== null) {
       jsxElement = (
-        <div className={response.faction.toLowerCase()}>
-          <div className="character-section">
-            <h3 className={response.class.toLowerCase()}>{response.name}</h3>
-            <p className="guild">&lt;{response.guild.name}&gt;</p>
-            <img src={response.thumbnail_url} alt="Character Portrait" />
-            <span className="name">
-              <p className={response.class.toLowerCase()}>
-                {response.active_spec_name} {response.class}
-              </p>
-            </span>
+        <>
+          <div className={response.faction.toLowerCase()}>
+            <div className="character-section">
+              <h3 className={response.class.toLowerCase()}>{response.name}</h3>
+              <p className="guild">&lt;{response.guild.name}&gt;</p>
+              <img src={response.thumbnail_url} alt="Character Portrait" />
+              <span className="name">
+                <p className={response.class.toLowerCase()}>
+                  {response.active_spec_name} {response.class}
+                </p>
+              </span>
+            </div>
           </div>
-        </div>
+          <div className="link-section">
+            <div className="nav-links">
+              <a target="_blank" className="rio" href={response.profile_url}>
+                <img src={rioIcon} alt="link to raiderio page" />
+              </a>
+              <a target="_blank" href={`https://www.warcraftlogs.com/character/${response.region}/${response.realm}/${response.name}`} className="wowlogs">
+                <img src={wowlogsIcon} alt="link to warcraftlogs page" />
+              </a>
+              <a
+                target="_blank"
+                href={`https://worldofwarcraft.blizzard.com/en-gb/character/${response.region}/${response.realm}/${response.name}`}
+                className="armory"
+              >
+                <img src={wowIcon} alt="link to world of warcraft armory" />
+              </a>
+            </div>
+          </div>
+        </>
       );
     }
 
