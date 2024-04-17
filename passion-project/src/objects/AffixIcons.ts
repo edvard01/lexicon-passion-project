@@ -11,7 +11,24 @@ import stormingIcon from "../assets/storming.jpg";
 import tyrannicalIcon from "../assets/tyrannical.jpg";
 import volcanicIcon from "../assets/volcanic.jpg";
 
-const affixIcons = {
+type AffixKey = keyof typeof affixIcons;
+
+export interface IAffixIcons {
+  bolstering: string;
+  afflicted: string;
+  bursting: string;
+  entangling: string;
+  fortified: string;
+  incorporeal: string;
+  raging: string;
+  sanguine: string;
+  spiteful: string;
+  tyrannical: string;
+  volcanic: string;
+  storming: string;
+}
+
+export const affixIcons = {
   bolstering: bolsteringIcon,
   afflicted: afflictedIcon,
   bursting: burstingIcon,
@@ -23,8 +40,9 @@ const affixIcons = {
   spiteful: spitefulIcon,
   tyrannical: tyrannicalIcon,
   volcanic: volcanicIcon,
+  storming: stormingIcon,
 };
 
-export function retrieveImage(path) {
+export function retrieveImage(path: AffixKey): string {
   return affixIcons[path];
 }

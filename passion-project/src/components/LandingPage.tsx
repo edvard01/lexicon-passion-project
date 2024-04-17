@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import "../css/landingPage.css";
-import { retrieveImage } from "../objects/AffixIcons.js";
+import { retrieveImage } from "../objects/AffixIcons.ts";
+import { affixIcons } from "../objects/AffixIcons.ts";
 import { ResetCountDown } from "./ResetCountDown.js";
+
+type AffixKey = keyof typeof affixIcons;
 
 interface IAffixObject {
   region: string;
@@ -36,11 +39,13 @@ interface IWeek {
 }
 
 export function LandingPage(): JSX.Element {
-  const [affixes, setAffixes] = useState<IAffixObject | null>(null);
+  const [euAffixes, setEuAffixes] = useState<IAffixObject | null>(null);
+  const [naAffixes, setNaAffixes] = useState<IAffixObject | null>(null);
   const [resetData, setResetData] = useState<IResetData | null>(null);
   const [euResetTime, setEuResetTime] = useState<string>("");
   const [naResetTime, setNaResetTime] = useState<string>("");
-  const [displayAffixes, setDisplayAffixes] = useState<JSX.Element[]>([]);
+  const [displayEuAffixes, setDisplayEuAffixes] = useState<JSX.Element[]>([]);
+  const [displayNaAffixes, setDisplayNaAffixes] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     fetch(`https://raider.io/api/v1/mythic-plus/affixes?region=eu&locale=en`)
@@ -48,7 +53,15 @@ export function LandingPage(): JSX.Element {
         return res.json();
       })
       .then((data) => {
-        setAffixes(data);
+        setEuAffixes(data);
+      });
+
+    fetch(`https://raider.io/api/v1/mythic-plus/affixes?region=us&locale=en`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setNaAffixes(data);
       });
 
     fetch(`https://raider.io/api/v1/periods`)
@@ -61,13 +74,12 @@ export function LandingPage(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    if (affixes !== null) {
+    if (euAffixes !== null) {
       let tempJsxArr: JSX.Element[] = [];
-      console.log(affixes);
-      let affixArr: string[] = affixes.title.split(", ");
+      let affixArr: string[] = euAffixes.title.split(", ");
       console.log(affixArr);
       for (let i = 0; i < affixArr.length; i++) {
-        let imageUrl = retrieveImage(affixArr[i].toLowerCase());
+        let imageUrl = retrieveImage(affixArr[i].toLowerCase() as AffixKey);
         console.log(imageUrl);
         let jsxElement: JSX.Element = (
           <span key={i} className="affix-row">
@@ -77,9 +89,29 @@ export function LandingPage(): JSX.Element {
         );
         tempJsxArr.push(jsxElement);
       }
-      setDisplayAffixes(tempJsxArr);
+      setDisplayEuAffixes(tempJsxArr);
     }
-  }, [affixes]);
+  }, [euAffixes]);
+
+  useEffect(() => {
+    if (naAffixes !== null) {
+      let tempJsxArr: JSX.Element[] = [];
+      let affixArr: string[] = naAffixes.title.split(", ");
+      console.log(affixArr);
+      for (let i = 0; i < affixArr.length; i++) {
+        let imageUrl = retrieveImage(affixArr[i].toLowerCase() as AffixKey);
+        console.log(imageUrl);
+        let jsxElement: JSX.Element = (
+          <span key={i} className="affix-row">
+            <img src={imageUrl} />
+            <p>{affixArr[i]}</p>
+          </span>
+        );
+        tempJsxArr.push(jsxElement);
+      }
+      setDisplayNaAffixes(tempJsxArr);
+    }
+  }, [naAffixes]);
 
   useEffect(() => {
     if (resetData !== null) {
@@ -111,8 +143,14 @@ export function LandingPage(): JSX.Element {
           <h2>Welcome!</h2>
           <div className="panels">
             <div className="panel-one">
-              <h4>Current Affixes (EU):</h4>
-              <span>{affixes === null ? displayLoader : displayAffixes}</span>
+              <span>
+                <h4>Current Affixes (EU):</h4>
+                <span>{euAffixes === null ? displayLoader : displayEuAffixes}</span>
+              </span>
+              <span>
+                <h4>Current Affixes (EU):</h4>
+                <span>{naAffixes === null ? displayLoader : displayNaAffixes}</span>
+              </span>
             </div>
             <div className="panel-two">
               {naResetTime !== "" || euResetTime !== "" ? <ResetCountDown naResetTime={naResetTime} euResetTime={euResetTime} /> : <></>}
