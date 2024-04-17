@@ -11,7 +11,21 @@ import stormingIcon from "../assets/storming.jpg";
 import tyrannicalIcon from "../assets/tyrannical.jpg";
 import volcanicIcon from "../assets/volcanic.jpg";
 
+import allianceCrest from "../assets/alliance-crest.png";
+import hordeCrest from "../assets/horde-crest.png";
+
 type AffixKey = keyof typeof affixIcons;
+type CrestKey = keyof typeof crestIcons;
+
+export interface ICrestIcons {
+  alliance: string;
+  horde: string;
+}
+
+export const crestIcons = {
+  alliance: allianceCrest,
+  horde: hordeCrest,
+};
 
 export interface IAffixIcons {
   bolstering: string;
@@ -45,4 +59,8 @@ export const affixIcons = {
 
 export function retrieveImage(path: AffixKey): string {
   return affixIcons[path];
+}
+
+export function retrieveCrest(path: CrestKey): string {
+  return crestIcons[path];
 }

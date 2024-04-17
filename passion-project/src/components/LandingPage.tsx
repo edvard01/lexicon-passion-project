@@ -148,7 +148,7 @@ export function LandingPage(): JSX.Element {
                 <span>{euAffixes === null ? displayLoader : displayEuAffixes}</span>
               </span>
               <span>
-                <h4>Current Affixes (EU):</h4>
+                <h4>Current Affixes (US):</h4>
                 <span>{naAffixes === null ? displayLoader : displayNaAffixes}</span>
               </span>
             </div>

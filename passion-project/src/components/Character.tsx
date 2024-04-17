@@ -52,12 +52,17 @@ export function Character(): JSX.Element {
     let jsxElement: JSX.Element = <></>;
     if (response !== null) {
       jsxElement = (
-        <div className="character-section">
-          <h3 className={response.class.toLowerCase()}>
-            {response.name}-{response.realm}
-          </h3>
-          <p className="guild">{response.guild.name}</p>
-          <p>{response.race} </p>
+        <div className={response.faction.toLowerCase()}>
+          <div className="character-section">
+            <h3 className={response.class.toLowerCase()}>{response.name}</h3>
+            <p className="guild">&lt;{response.guild.name}&gt;</p>
+            <img src={response.thumbnail_url} alt="Character Portrait" />
+            <span className="name">
+              <p className={response.class.toLowerCase()}>
+                {response.active_spec_name} {response.class}
+              </p>
+            </span>
+          </div>
         </div>
       );
     }
