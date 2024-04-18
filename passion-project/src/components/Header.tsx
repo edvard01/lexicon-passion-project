@@ -7,7 +7,7 @@ export function Header(): JSX.Element {
         <div className="header-content">
           <a href="/">Home</a>
           <a href="/character">Character</a>
-          <a href="#">Guild</a>
+          <a href="/guild">Guild</a>
           <a href="#">Top 100</a>
         </div>
       </header>
