@@ -163,3 +163,28 @@
   width: 50px;
   height: auto;
 }
+
+.page .content .panel-two .char-info-section {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page .content .panel-two .char-info-section p {
+  font-family: "lifeCraft";
+  font-size: 1.4rem;
+  margin: 0;
+  color: white;
+}
+
+.page .content .panel-two .char-info-section .talent-calc {
+  width: 112px;
+  padding: 6px 12px;
+  background-color: #bd1d1c;
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+  text-align: center;
+}

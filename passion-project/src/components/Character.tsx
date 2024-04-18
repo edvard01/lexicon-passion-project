@@ -23,6 +23,11 @@ interface IResponse {
   thumbnail_url: string;
   gear: IGear;
   guild: IGuild;
+  talentLoadout: ITalents;
+}
+
+interface ITalents {
+  loadout_text: string;
 }
 
 interface IGear {
@@ -54,6 +59,17 @@ export function Character(): JSX.Element {
   const drawCharacter = () => {
     let jsxElement: JSX.Element = <></>;
     if (response !== null) {
+      let itemLevelColor: string = "";
+      const itemLevel: number = Number(response.gear.item_level_equipped);
+      if (itemLevel > 484) {
+        itemLevelColor = "legendary";
+      } else if (itemLevel > 480) {
+        itemLevelColor = "superior";
+      } else if (itemLevel > 460) {
+        itemLevelColor = "rare";
+      } else {
+        itemLevelColor = "uncommon";
+      }
       jsxElement = (
         <>
           <div className={response.faction.toLowerCase()}>
@@ -84,11 +100,14 @@ export function Character(): JSX.Element {
                 <img src={wowIcon} alt="link to world of warcraft armory" />
               </a>
             </div>
-            <div className="char-info-section">
-              <p>
-                Item Level: <span className="">{response.gear.item_level_equipped}</span>
-              </p>
-            </div>
+          </div>
+          <div className="char-info-section">
+            <p>
+              Item Level: <span className={itemLevelColor}>{response.gear.item_level_equipped}</span>
+            </p>
+            <a className="talent-calc" target="_blank" href={`https://www.wowhead.com/talent-calc/rogue/assassination/${response.talentLoadout.loadout_text}`}>
+              Talents &rarr;
+            </a>
           </div>
         </>
       );
