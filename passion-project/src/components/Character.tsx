@@ -84,6 +84,11 @@ export function Character(): JSX.Element {
                 <img src={wowIcon} alt="link to world of warcraft armory" />
               </a>
             </div>
+            <div className="char-info-section">
+              <p>
+                Item Level: <span className="">{response.gear.item_level_equipped}</span>
+              </p>
+            </div>
           </div>
         </>
       );
