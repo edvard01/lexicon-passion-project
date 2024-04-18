@@ -91,3 +91,11 @@
   background-color: #5d6068;
   cursor: pointer;
 }
+
+.page .content .panel-two {
+  width: 474px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 100px;
+}

@@ -65,6 +65,9 @@ export function Guild(): JSX.Element {
               <button type="submit">Search</button>
             </form>
           </div>
+          <div className="panel-two">
+            <h3>Guild name & info here</h3>
+          </div>
         </div>
       </div>
     </>
