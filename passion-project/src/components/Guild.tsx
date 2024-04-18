@@ -8,9 +8,7 @@ export function Guild(): JSX.Element {
   const [response, setResponse] = useState<null>(null);
 
   function fetchCharData() {
-    fetch(
-      `https://raider.io/api/v1/guilds/profile?region=${region}&realm=${server}&name=${guildName}&fields=raid_progression%2C%20raid_rankings%2C%20members%2C%20raid_encounters%3ARAID_SLUG%3ADIFFICULTY`
-    )
+    fetch(`https://raider.io/api/v1/guilds/profile?region=${region}&realm=${server}&name=${guildName}&fields=raid_progression,raid_rankings`)
       .then((res) => {
         console.log(res);
         return res.json();

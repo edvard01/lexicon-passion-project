@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "lifeCraft";
+  src: url("../assets/LifeCraft_Font.ttf");
+}
+
+.page {
+  width: 100%;
+  height: 800px;
+}
+
+.page .content {
+  width: 80%;
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.page .content .panel-one {
+  width: 474px;
+}
+
+.page .content .panel-one h3 {
+  color: white;
+  margin-top: 2.5rem;
+  margin-bottom: 0px;
+  padding: 0px;
+  font-size: 1.8rem;
+  font-family: "lifeCraft";
+}
+
+.page .content .panel-one form {
+  height: 250px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: "lifeCraft";
+}
+
+.page .content .panel-one form span {
+  display: flex;
+  flex-direction: column;
+}
+
+.page .content .panel-one label {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.page .content .panel-one select {
+  width: 100px;
+  height: 40px;
+
+  color: white;
+  background-color: #323949;
+  border: none;
+}
+
+.page .content .panel-one select option {
+  color: white;
+}
+
+.page .content .panel-one form span input {
+  height: 26px;
+  font-size: 1rem;
+
+  color: white;
+  background-color: #323949;
+  border: 1px solid #323949;
+}
+
+.page .content .panel-one form span input:focus {
+  outline: none;
+  border: 1px solid #5d6068;
+}
+
+.page .content .panel-one form button {
+  height: 24px;
+  width: 25%;
+  background-color: #4c5265;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-family: "lifeCraft";
+  font-size: 1rem;
+}
+
+.page .content .panel-one form button:hover {
+  background-color: #5d6068;
+  cursor: pointer;
+}
